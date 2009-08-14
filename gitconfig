@@ -24,4 +24,5 @@
     editor = mate -w
 [apply]
     whitespace = nowarn
-
+[branch]
+	autosetuprebase = remote
