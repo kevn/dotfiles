@@ -1,7 +1,7 @@
 . ~/.zsh/aliases
 
 # changing directory to code project
-function c { cd ~/code/$1; }
+function d { cd ~/dev/$1; }
 
 # alternative to "rails" command to use templates
 function railsapp {
@@ -11,5 +11,28 @@ function railsapp {
   rails $appname -m http://github.com/ryanb/rails-templates/raw/master/$template.rb $@
 }
 
+# svnup to print what was updated
+# Get the current revision of a repository
+svn_revision()
+{
+  svn info $@ | awk '/^Revision:/ {print $2}'
+}
+
+# Does an svn up and then displays the changelog between your previous
+# version and what you just updated to.
+svn_up_and_log()
+{
+  local old_revision=`svn_revision $@`
+  local first_update=$((${old_revision} + 1))
+  svn up -q $@
+  if [ $(svn_revision $@) -gt ${old_revision} ]; then
+    svn log -v -rHEAD:${first_update} $@
+  else
+    echo "No changes."
+  fi
+}
+alias svnup='svn_up_and_log'
+
 # misc
 alias reload='. ~/.bash_profile'
+
