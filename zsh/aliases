@@ -40,6 +40,6 @@ alias mi="bin/merb -i"
 alias %=' '
 
 # General
-alias h='history|grep'
+alias h='history -E 1|grep'
 alias top="top -o cpu"
 
