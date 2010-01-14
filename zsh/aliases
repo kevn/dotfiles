@@ -36,6 +36,9 @@ alias wf='cd ~/dev/workfeed'
 # merb
 alias mi="bin/merb -i"
 
+# db
+alias sql="psql83 -Upostgres"
+
 # commands starting with % for pasting from web
 alias %=' '
 
