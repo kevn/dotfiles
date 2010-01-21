@@ -12,12 +12,17 @@ alias lrt='ls -lrt'
 alias gl='git pull'
 alias gp='git push'
 alias gd='git diff'
+alias gdm='git diff master...HEAD'
+alias gdc='git diff --cached'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gco='git checkout'
 alias gb='git branch'
 alias gs='git status'
+alias gr='git rebase'
+alias gcm='git checkout master'
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
+alias master="git checkout master"
 
 # svn
 alias svns="svn st|grep -e '^[ACM]'"

@@ -26,3 +26,6 @@
     whitespace = nowarn
 [branch]
 	autosetuprebase = remote
+[sendemail]
+	smtpserver = /opt/local/bin/msmtp
+	chainreplyto = false
