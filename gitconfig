@@ -1,0 +1,40 @@
+[user]
+    name = Kevin E. Hunt
+    email = kevin@kev.in
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = auto
+[github]
+    user = kevn
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    lp = log -p
+    diffall = diff HEAD
+    diffstaged = diff --staged
+    graph = log --oneline --graph
+    filelog = log --oneline --no-merges --
+    unstage = reset HEAD
+[core]
+    excludesfile = /Users/kevin/.gitignore
+    editor = mate -w
+[apply]
+    whitespace = nowarn
+[format]
+  pretty = %C(yellow)%h%Creset %s
+[branch]
+  autosetuprebase = remote
+[sendemail]
+  smtpserver = /opt/local/bin/msmtp
+  chainreplyto = false
+[merge]
+  # tool = opendiff
+  tool = diffmerge
+[mergetool "diffmerge"]
+  cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
+  trustExitCode = false
+
