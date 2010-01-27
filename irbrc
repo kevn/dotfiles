@@ -1,18 +1,26 @@
-#!/usr/bin/ruby
-require 'irb/completion'
-require 'irb/ext/save-history'
-
-IRB.conf[:SAVE_HISTORY] = 1000
-IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
-
-IRB.conf[:PROMPT_MODE] = :SIMPLE
-
+#!/usr/bin/env ruby
 %w[rubygems looksee/shortcuts wirble].each do |gem|
   begin
     require gem
   rescue LoadError
   end
 end
+
+# require 'irb/completion'
+# require 'irb/ext/save-history'
+
+require 'bond'
+require 'bond/completion'
+
+Wirble.init
+Wirble.colorize
+
+require 'irb/ext/save-history'
+IRB.conf[:SAVE_HISTORY] = 10000
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
+
+IRB.conf[:PROMPT_MODE] = :SIMPLE
+
 
 class Object
   # list methods which aren't in superclass
