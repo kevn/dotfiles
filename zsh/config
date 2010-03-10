@@ -1,16 +1,19 @@
 if [[ -n $SSH_CONNECTION ]]; then
-  export PS1='%m:%3~$(git_info_for_prompt)%# '
+  export PS1='%m:%3~%# '
+  export RPROMPT='%{$fg[yellow]%}$(git_info_for_prompt)%{$reset_color%}'
 else
-  export PS1='%3~$(git_info_for_prompt)%# '
+  export PS1='%3~%# '
+  export RPROMPT='%{$fg[yellow]%}$(git_info_for_prompt)%{$reset_color%}'
 fi
 
 export EDITOR='mate -w'
-export PATH="$HOME/bin:/opt/ruby-enterprise/bin:/opt/local/lib/postgresql83/bin:/opt/local/scala/bin:/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:$PATH"
+export PATH="$HOME/bin:/opt/ruby-enterprise/bin:/opt/local/lib/postgresql83/bin:/opt/local/apache2/bin:/opt/local/scala/bin:/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:$PATH"
 export MANPATH="/opt/local/man:/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 fpath=(~/.zsh/functions $fpath)
 
 autoload -U ~/.zsh/functions/*(:t)
+autoload -U colors && colors
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000

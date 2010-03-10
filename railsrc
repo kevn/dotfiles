@@ -1,8 +1,32 @@
 #!/usr/bin/ruby
 
 begin
-  require 'hirb' # sudo gem install cldwalker-hirb --source http://gems.github.com
-  Hirb.enable
+  require 'hirb' # sudo gem install hirb
+  Hirb.enable do |c|
+    c.output = {
+      "Network" => {
+        :options => {
+          :fields => %w{
+            id network_type name permalink active_users_count moderated subscription_level created_at
+          }
+        }
+      },
+      "User" => {
+        :options => {
+          :fields => %w{
+            id email state network guest created_at
+          }
+        }
+      },
+      "Message" => {
+        :options => {
+          :fields => %w{
+            id state sender network conversation_id thread_id group_id client_id ref_id body
+          }
+        }
+      },
+    }
+  end
 rescue LoadError
 end
 
@@ -13,8 +37,15 @@ end
 
 def show_log
   change_log(STDOUT)
+  nil
 end
 
 def hide_log
   change_log(nil)
+  nil
 end
+
+def disable_security_context
+  $effective_network_id = 0
+end
+
